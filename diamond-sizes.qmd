@@ -1,0 +1,66 @@
+---
+title: "Diamond sizes"
+date: 2022-09-12
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: report
+  docx: default
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(tidyverse)
+
+smaller <- diamonds |> 
+  filter(carat <= 2.5)
+```
+
+We have data about `r nrow(diamonds)` diamonds.
+Only `r nrow(diamonds) - nrow(smaller)` are larger than 2.5 carats.
+The distribution of the remainder is shown below:
+
+```{r}
+#| label: plot-smaller-diamonds
+#| echo: false
+
+smaller |> 
+  ggplot(aes(x = carat)) + 
+  geom_freqpoly(binwidth = 0.01)
+```
+
+
+```{r}
+#| echo: fenced
+#| out-width: "70%"
+#| fig-align: center
+
+smaller |> 
+  ggplot(aes(y = price, x = color)) + 
+  geom_bar(stat = "identity")
+```
+
+```{r}
+#| echo: fenced
+#| tbl-cap: Una tabla con `flextable`
+library(flextable)
+
+copy_mtcars <- mtcars
+copy_mtcars$brand <- row.names(mtcars)
+copy_mtcars <- copy_mtcars[ , c(12,1:11)]
+
+ft <- flextable(copy_mtcars[1:5, ])
+ft <- autofit(ft)
+ft
+```
+
+
+```{r}
+#| echo: fenced
+#| tbl-cap: Una tabla con `knitr`
+ 
+knitr::kable(mtcars[1:5, ])
+```

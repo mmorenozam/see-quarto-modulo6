@@ -1,0 +1,219 @@
+[
+  {
+    "objectID": "index.html#evaluación-del-curso",
+    "href": "index.html#evaluación-del-curso",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Evaluación del curso",
+    "text": "Evaluación del curso\nDeseo saber tu opinión acerca del curso hasta este momento. Por favor, ingresa al menti haciendo click aquí o con el siguiente código QR:"
+  },
+  {
+    "objectID": "index.html#evaluación-del-curso-1",
+    "href": "index.html#evaluación-del-curso-1",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Evaluación del curso",
+    "text": "Evaluación del curso"
+  },
+  {
+    "objectID": "index.html#introducción",
+    "href": "index.html#introducción",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Introducción",
+    "text": "Introducción"
+  },
+  {
+    "objectID": "index.html#introducción-1",
+    "href": "index.html#introducción-1",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Introducción",
+    "text": "Introducción\n\n\nR tiene la capacidad de crear reportes en distintos formatos.\nEsta funcionalidad en el pasado se daba gracias al paquete rmarkdown (creado por los mismos desarrolladores de RStudio), que es una adaptación del lenguaje Markdown. Sin embargo, rmarkdown posee ciertas desventajas:\n\nEs exclusivo de lenguaje R\nNecesita de otros paquetes para crear distintos tipos de documentos (blogdown para sitios web, bookdown para libros o revealjs para crear presentaciones).\nEl hacer uso de extensiones es complejo.\n\nEn 2022, el grupo de desarrolladores de RStudio (Posit), lanzó Quarto como la siguiente generación de rmarkdown. Entre sus ventajas cuenta:\n\nEs multi-lenguaje. Al momento tiene compatibilidad con Python, Julia, Observable y por supuesto R.\nOpciones de renderizado centralizadas (no se requiere ya de distintos paquetes para crear sitios web, libros o presentaciones).\nLas extensiones son fácilmente instaladas (ejemplo: puntero láser en presentaciones)."
+  },
+  {
+    "objectID": "index.html#qué-es-quarto",
+    "href": "index.html#qué-es-quarto",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "¿Qué es Quarto?",
+    "text": "¿Qué es Quarto?\n\n\nQuarto es un sistema de publicación científica de licencia abierta construído en Pandoc\nFue nombrado de esta manera por la intención de sus creadores de darle un nombre representativo: Quarto es el formato de un panfleto o libro producido de hojas impresas que contienen 8 páginas de texto (4 páginas por carilla). Se cree que el primer libro europeo impreso fue un Quarto llamado el Sibyllenbuch, atribuido a Johannes Gutenberg entre 1452 y 1453.\n\n\n\n\n\n\nEjemplo de un Quarto: Fragmento de Hamlet, impreso durante la vida de Shakespeare"
+  },
+  {
+    "objectID": "index.html#qué-es-quarto-1",
+    "href": "index.html#qué-es-quarto-1",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "¿Qué es Quarto?",
+    "text": "¿Qué es Quarto?\n\n\nCon Quarto podemos producir documentos en varios formatos, pero debemos tener en cuenta algunos pre-requisitos:\n\nhtml (no necesita pre-requerisitos)\npdf (necesita \\(\\LaTeX\\))\nWord (necesita Microsoft Office o LibreOffice)\nPower Point (necesita Microsoft Office o LibreOffice)\nShiny apps (necesita el paquete shiny de R)\n\nOtra funcionalidad interesante de Quarto (y rmarkdown también), es el poder renderizar ecuaciones:\n\nCuando creamos documentos con fórmulas matemáticas, Quarto usa un módulo llamado “Latexmk” que las renderiza de manera similar como lo haría \\(\\LaTeX\\)."
+  },
+  {
+    "objectID": "index.html#qué-es-latex",
+    "href": "index.html#qué-es-latex",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "¿Qué es \\(\\LaTeX\\)?",
+    "text": "¿Qué es \\(\\LaTeX\\)?\n\n\n\n\n\\(\\TeX\\) es un sistema de edición de fórmulas creado por el matemático Donald Knuth en 1978.\nPosteriormente en 1984, el matemático Leslie Lamport creó \\(\\LaTeX\\), que es un software de edición que se basa en \\(\\TeX\\).\nTanto \\(\\TeX\\) como \\(\\LaTeX\\), nacieron de la necesidad de contar con un editor de texto capaz de renderizar ecuaciones matemáticas.\nBastante popular en ingenierías, física y matemáticas.\nIndependientemente de que creemos documentos en Word o pdf con fórmulas, estas necesitan estar en lenguaje \\(\\TeX\\) para su renderización.\nSi creamos documentos en pdf, es indispensable instalar alguna versión de \\(\\LaTeX\\), como ya veremos en breve."
+  },
+  {
+    "objectID": "index.html#instalación-de-quarto",
+    "href": "index.html#instalación-de-quarto",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Instalación de Quarto",
+    "text": "Instalación de Quarto\n\n\nIngresa al siguiente sitio y descarga Quarto acorde a tu Sistema Operativo.\nSigue las intrucciones sin cambiar los defaults e instala Quarto.\nPara el correcto funcionamiento de Quarto, es necesario que cuentes con el paquete knitr.\nEn el caso de usar visualizaciones basadas en plotly (heatmaply por ejemplo), es necesario instalar una versión anterior de knitr. A la fecha de crear estas diapositivas, 05.04.2024, la última versión disponible de knitr produce errores al intentar renderizar documentos que contengan objetos creados con plotly o sus dependencias.\nPara instalar una versión anterior (de cualquier paquete), podemos usar la ayuda del paquete devtools, de la siguiente manera:\n\n\n\n\ninstall.packages(\"devtools\")\nlibrary(devtools)\ninstall_version(\"knitr\", version = \"1.42\", repos = \"http://cran.us.r-project.org\")"
+  },
+  {
+    "objectID": "index.html#instalación-de-latex",
+    "href": "index.html#instalación-de-latex",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Instalación de \\(\\LaTeX\\)",
+    "text": "Instalación de \\(\\LaTeX\\)\n\n\nExisten varias opciones para contar con \\(\\LaTeX\\) (MiKTeX, TeX Live por ejemplo). Sin embargo, los autores de Quarto recomiendan usar TinyTeX.\nPara instalar TinyTex, lo más simple es hacerlo mediante el terminal de R:\n\n\n\n\nquarto install tinytex"
+  },
+  {
+    "objectID": "index.html#preparando-nuestro-ambiente-de-trabajo",
+    "href": "index.html#preparando-nuestro-ambiente-de-trabajo",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Preparando nuestro ambiente de trabajo",
+    "text": "Preparando nuestro ambiente de trabajo\n\n\n\n\n\n\n\n\n\nVamos a “File” (Archivo, dependiendo de si instalaste R con GUI y mensajes traducidos).\nEscogemos la opción “New Project…” (Proyecto Nuevo…)"
+  },
+  {
+    "objectID": "index.html#preparando-nuestro-ambiente-de-trabajo-1",
+    "href": "index.html#preparando-nuestro-ambiente-de-trabajo-1",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Preparando nuestro ambiente de trabajo",
+    "text": "Preparando nuestro ambiente de trabajo\n\n\n\n\n\n\n\n\n\nVamos a “File” (Archivo, dependiendo de si instalaste R con GUI y mensajes traducidos).\nEscogemos la opción “New Project…” (Proyecto Nuevo…).\nRStudio nos dará a escoger entre distintos tipos de proyectos, escogeremos “Quarto Project” (Proyecto de Quarto)."
+  },
+  {
+    "objectID": "index.html#preparando-nuestro-ambiente-de-trabajo-2",
+    "href": "index.html#preparando-nuestro-ambiente-de-trabajo-2",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Preparando nuestro ambiente de trabajo",
+    "text": "Preparando nuestro ambiente de trabajo\n\n\n\n\n\n\n\n\n\nVamos a “File” (Archivo, dependiendo de si instalaste R con GUI y mensajes traducidos).\nEscogemos la opción “New Project…” (Proyecto Nuevo…).\nRStudio nos dará a escoger entre distintos tipos de proyectos, escogeremos “Quarto Project” (Proyecto de Quarto).\nLuego, escogeremos de entre tres opciones la llamada “New Directory” (Nuevo Directorio)."
+  },
+  {
+    "objectID": "index.html#preparando-nuestro-ambiente-de-trabajo-3",
+    "href": "index.html#preparando-nuestro-ambiente-de-trabajo-3",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Preparando nuestro ambiente de trabajo",
+    "text": "Preparando nuestro ambiente de trabajo\n\n\n\n\n\n\n\n\n\nVamos a “File” (Archivo, dependiendo de si instalaste R con GUI y mensajes traducidos).\nEscogemos la opción “New Project…” (Proyecto Nuevo…).\nRStudio nos dará a escoger entre distintos tipos de proyectos, escogeremos “Quarto Project” (Proyecto de Quarto).\nLuego, escogeremos de entre tres opciones la llamada “New Directory” (Nuevo Directorio).\nEn esta ventana, RStudio nos preguntará el nombre del nuevo directorio que queremos crear para nuestro proyecto y la ubicación del mismo. Dejamos los otros campos tal cual están en el visor. Damos entonces el click en “Create Project” (Crear Proyecto)."
+  },
+  {
+    "objectID": "index.html#preparando-nuestro-ambiente-de-trabajo-4",
+    "href": "index.html#preparando-nuestro-ambiente-de-trabajo-4",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Preparando nuestro ambiente de trabajo",
+    "text": "Preparando nuestro ambiente de trabajo\nUna vez que hallamos seguido los pasos, RStudio habrá creado un script de template además de otros archivos dentro del directorio de trabajo que hayamos especificado."
+  },
+  {
+    "objectID": "index.html#todo-funciona-bien",
+    "href": "index.html#todo-funciona-bien",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "¿Todo funciona bien?",
+    "text": "¿Todo funciona bien?\n\n\nEn este punto, comprobaremos si todos los pasos que hemos seguido en la instalación fueron correctos.\nBasta con presionar el botón “Render” en nuestro script. Esta acción le ordena a RStudio a renderizar el template que obtuvimos después de la creación del proyecto.\nComo resultado, RStudio abrirá una ventana del navegador de internet predeterminado de tu ordenador para mostrar el documento renderizado (por default, Quarto genera documentos de extensión html)."
+  },
+  {
+    "objectID": "index.html#partes-básicas-de-un-documento-de-quarto",
+    "href": "index.html#partes-básicas-de-un-documento-de-quarto",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Partes básicas de un documento de Quarto",
+    "text": "Partes básicas de un documento de Quarto\n\n\nNota que la extensión del documento de Quarto es “qmd”.\nEn el código básico generamos al crear el proyecto, podemos reconocer fácilmente tres secciones de código:\n\nEncabezado: delimitado por ---, contiene instrucciones en formato YAML\nFragmentos (chunks) de código R: delimitados con ```\nTexto llano precedido por un encabezado delimitado por ##\n\nEsta es la estructura básica de un código fuente en un documento de Quarto.\nTenemos entonces, dos opciones para trabajar en Quarto:\n\nTrabajar directamente en el código fuente.\nTrabajar con el editor Visual de RStudio sobre documentos de Quarto.\n\nEsta última opción es la recomendada para principiantes ya que es más intuitiva por su parecido con software de edición de texto (Word)."
+  },
+  {
+    "objectID": "index.html#partes-básicas-de-un-documento-de-quarto-1",
+    "href": "index.html#partes-básicas-de-un-documento-de-quarto-1",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Partes básicas de un documento de Quarto",
+    "text": "Partes básicas de un documento de Quarto\nPara ello, copia el siguiente ejemplo de los “tamaños de diamante” del libro “R for Data Science” de Hadley Wickham y cópialo sobre el archivo que generamos:\n\n\n---\ntitle: \"Diamond sizes\"\ndate: 2022-09-12\nformat:\n  html:\n    theme: cosmo\n  pdf:\n    documentclass: report\n  docx: default\n---\n\n```{r}\n#| label: setup\n#| include: false\n\nlibrary(tidyverse)\n\nsmaller &lt;- diamonds |&gt; \n  filter(carat &lt;= 2.5)\n```\n\nWe have data about `r nrow(diamonds)` diamonds.\nOnly `r nrow(diamonds) - nrow(smaller)` are larger than 2.5 carats.\nThe distribution of the remainder is shown below:\n\n```{r}\n#| label: plot-smaller-diamonds\n#| echo: false\n\nsmaller |&gt; \n  ggplot(aes(x = carat)) + \n  geom_freqpoly(binwidth = 0.01)\n```\n\n\n```{r}\n#| echo: fenced\n#| out-width: \"70%\"\n#| fig-align: center\n\nsmaller |&gt; \n  ggplot(aes(y = price, x = color)) + \n  geom_bar(stat = \"identity\")\n```\n\n```{r}\n#| echo: fenced\n#| tbl-cap: Una tabla con `flextable`\nlibrary(flextable)\n\ncopy_mtcars &lt;- mtcars\ncopy_mtcars$brand &lt;- row.names(mtcars)\ncopy_mtcars &lt;- copy_mtcars[ , c(12,1:11)]\n\nft &lt;- flextable(copy_mtcars[1:5, ])\nft &lt;- autofit(ft)\nft\n```\n\n\n```{r}\n#| echo: fenced\n#| tbl-cap: Una tabla con `knitr`\n \nknitr::kable(mtcars[1:5, ])\n```"
+  },
+  {
+    "objectID": "index.html#nombrando-partes-de-código",
+    "href": "index.html#nombrando-partes-de-código",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Nombrando partes de código",
+    "text": "Nombrando partes de código\n\n\nLas partes de código pueden ser nombradas\n\n\n\n\n```{r}\n#| label: simple-addition\n\n1 + 1\n```\n\n[1] 2\n\n\n\n\n\nEsto puede ser útil ya que nos permite navegar directamente hacia fragmentos de código específicos."
+  },
+  {
+    "objectID": "index.html#opciones-en-las-partes-de-código",
+    "href": "index.html#opciones-en-las-partes-de-código",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Opciones en las partes de Código",
+    "text": "Opciones en las partes de Código\n\n\nEl código de R que usemos para nuestros reportes tiene una variada gama de opciones, entre ellas:\n\neval: false cuando no queremos que al renderizar se ejecute el código.\ninclude: false corre el código, pero no lo muestra en el documento.\necho: false evalua el código, y sus resultados son renderizados (ejemplo: gráficos). Pero, el código no forma parte del documento final.\nmessage: false o warning: false evita que mensajes o advertencias de correr el código sean parte del documento.\nresults: hide oculta resultads; fig-show: hide oculta figuras. Estas opciones son más útiles en creación de documentos html.\nerror: true permite el terminar el renderizado del documento así se encuentren errores en el código. Es especialmente importante cuando comenzamos a crear el reporte ya que nos permite identificar fallas y corregirlas.\n\nPara incluir estas opciones en nuestros fragmentos de código, podemos hacerlo usando la sintaxis #| seguida de la opción:\n\n\n\n\n```{r}\n#| label: simple-multiplication\n#| eval: false\n\n2 * 2\n```"
+  },
+  {
+    "objectID": "index.html#opciones-en-las-partes-de-código-1",
+    "href": "index.html#opciones-en-las-partes-de-código-1",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Opciones en las partes de Código",
+    "text": "Opciones en las partes de Código\n\n\n\n\n\n\n\n\n\n\n\n\nOption\nRun code\nShow code\nOutput\nPlots\nMessages\nWarnings\n\n\n\n\neval: false\nX\n\nX\nX\nX\nX\n\n\ninclude: false\n\nX\nX\nX\nX\nX\n\n\necho: false\n\nX\n\n\n\n\n\n\nresults: hide\n\n\nX\n\n\n\n\n\nfig-show: hide\n\n\n\nX\n\n\n\n\nmessage: false\n\n\n\n\nX\n\n\n\nwarning: false\n\n\n\n\n\nX"
+  },
+  {
+    "objectID": "index.html#opciones-globales",
+    "href": "index.html#opciones-globales",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Opciones globales",
+    "text": "Opciones globales\n\n\nSon agregadas en el encabezado del script de Quarto (en lenguaje YAML).\nVamos a ir aprendiendo algunas de ellas conforme avancemos. Por el momento, probemos si TinyTeX funciona. Para eso, vamos a cambiar en el encabezado la línea format: html por format: pdf.\nDe no haber tenido problemas con la instalación de TinyTex, deberás ver que en tu directorio de trabajo se ha generado un documento pdf."
+  },
+  {
+    "objectID": "index.html#importando-figuras",
+    "href": "index.html#importando-figuras",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Importando figuras",
+    "text": "Importando figuras\n\n\nPodemos importar figuras de archivos externos (.png, .jpg, .pdf, etc).\nPara esto, empecemos creando una carpeta dentro de nuestro directorio de trabajo para almacenar nuestras imágenes (este paso es opcional, pero recomendado para una mejor organización de nuestros proyectos).\nHecho esto, importamos la figura de interés con la sintaxis: ![Pie de figura](figura_nombre){opciones}\n\n\n\n\n![Logo SEE](images/icon.png){fig-align=\"center\" width=15%}\n\n\n\n\nLogo SEE\n\n\n\n\n\nNoten como en el código arriba, el nombre de nuestra figura está antecedido por images/."
+  },
+  {
+    "objectID": "index.html#creando-figuras-en-partes-de-código",
+    "href": "index.html#creando-figuras-en-partes-de-código",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Creando figuras en partes de código",
+    "text": "Creando figuras en partes de código\n\n\nQuarto puede renderizar figuras producidas por partes de código R dentro de un documento (como ya lo debiste notar al renderizar nuestro documento de ejemplo a formato pdf (diapositiva 14).\nFunciona sin mayores problemas para la mayoría de plots producidos tanto por gráficos de R base, ggplot2 y otros paquetes. Aunque, con ciertas excepciones, como ya mencionamos a paquetes que dependen de plotly (que requieren una versión específica de knitr).\nAhora, lo importante es saber cómo podemos determinar el tamaño de nuestras figuras. Para ello podemos hacer uso estas opciones en nuestros fragmentos de código:\n\nfig-width: controla el ancho de la figura.\nfig-height: controla el alto de la figura.\nfig-asp: controla la relación de aspecto (relación ancho por alto).\nout-width y out-height: controlan el ancho y largo de la figura (en porcentaje con respecto al ancho y alto de la página del documento)."
+  },
+  {
+    "objectID": "index.html#controlando-el-tamaño-de-una-figura",
+    "href": "index.html#controlando-el-tamaño-de-una-figura",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Controlando el tamaño de una figura",
+    "text": "Controlando el tamaño de una figura\n\n\nEl libro “R for Data Science”, nos da las siguientes recomendaciones:\n\n\nFijar fig-width: 6 (6 pulgadas) y fig-asp: 0.618 (la proporción áurea) para todas las figuras (en el encabezado). Luego, si deseáramos cambiar una figura individual, lo hacemos ajustando fig-asp por fragmentos individuales.\n\n\n\n---\ntitle: \"Diamond sizes\"\ndate: 2022-09-12\nformat: \n  pdf:\n    fig-width: 6\n    fig-asp: 0.618\n---\n\n```{r}\n#| fig-asp: 0.3\n\nsmaller |&gt; \n  ggplot(aes(y = price, x = color)) + \n  geom_bar(stat = \"identity\")\n```"
+  },
+  {
+    "objectID": "index.html#controlando-el-tamaño-de-una-figura-1",
+    "href": "index.html#controlando-el-tamaño-de-una-figura-1",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Controlando el tamaño de una figura",
+    "text": "Controlando el tamaño de una figura\n\nControlar el tamaño con out-width y definirlo a un porcentaje del ancho de la hoja del documento. Sugiere out-width: \"70%\" y fig-align: center. Esto de manera individual por cada figura.\n\n\n\n```{r}\n#| out-width: \"70%\"\n#| fig-align: center\n\nsmaller |&gt; \n  ggplot(aes(y = price, x = color)) + \n  geom_bar(stat = \"identity\")\n```"
+  },
+  {
+    "objectID": "index.html#otras-opciones-de-figuras-importantes",
+    "href": "index.html#otras-opciones-de-figuras-importantes",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Otras opciones de figuras importantes",
+    "text": "Otras opciones de figuras importantes\n\nPodemos añadir leyendas a nuestras figuras con la opción fig-cap y su ubicación con fig-cap-location\n\n\n\n```{r}\n#| out-width: \"30%\"\n#| fig-align: center\n#| fig-cap: Figura de precios de diamantes de acuerdo a su color\n#| fig-cap-location: bottom\n\nsmaller |&gt; \n  ggplot(aes(y = price, x = color)) + \n  geom_bar(stat = \"identity\")\n```\n\n\n\n\nFigura de precios de diamantes de acuerdo a su color"
+  },
+  {
+    "objectID": "index.html#otras-opciones-de-figuras-importantes-1",
+    "href": "index.html#otras-opciones-de-figuras-importantes-1",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Otras opciones de figuras importantes",
+    "text": "Otras opciones de figuras importantes\n\n\nCuando nos encontramos renderizando documentos de formato pdf, las figuras producidas son de alta calidad (al ser generadas como gráficos de vectores).\nSin embargo, si la figura es muy compleja (con cientos de miles de puntos en un gráfico de dispersión) esto provocará problemas:\n\nArchivos muy pesados\nFallos de memoria, sobre todo en computadores de bajo RAM\nMayor probabilidad de que nuestros archivos pdf se corrompan con el tiempo.\n\nPara evitar esto, podemos usar la opción fig-format: \"png\". El formato de gráficos png es bastante ligero y de buena calidad."
+  },
+  {
+    "objectID": "index.html#cómo-creamos-tablas-en-quarto",
+    "href": "index.html#cómo-creamos-tablas-en-quarto",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "¿Cómo creamos tablas en Quarto?",
+    "text": "¿Cómo creamos tablas en Quarto?\n\n\nSe pueden crear manualmente en el editor Visual para documentos de Quarto de RStudio.\nTambién a partir de fragmentos de código.\nPor default, Quarto imprime tablas de datos tal cual como aparecen en la consola de R.\n\n\n\n\n```{r}\nmtcars[1:5, ]\n```\n\n                   mpg cyl disp  hp drat    wt  qsec vs am gear carb\nMazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2"
+  },
+  {
+    "objectID": "index.html#creando-tablas-con-knitr-en-quarto",
+    "href": "index.html#creando-tablas-con-knitr-en-quarto",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Creando tablas con knitr en Quarto",
+    "text": "Creando tablas con knitr en Quarto\n\nOtra opción, es la de usar knitr para darle formato a nuestras tablas\n\n\n\n```{r}\n#| tbl-cap: Una tabla con `knitr`\n\nknitr::kable(mtcars[1:5, ])\n```\n\n\nUna tabla con knitr \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n\nMazda RX4\n21.0\n6\n160\n110\n3.90\n2.620\n16.46\n0\n1\n4\n4\n\n\nMazda RX4 Wag\n21.0\n6\n160\n110\n3.90\n2.875\n17.02\n0\n1\n4\n4\n\n\nDatsun 710\n22.8\n4\n108\n93\n3.85\n2.320\n18.61\n1\n1\n4\n1\n\n\nHornet 4 Drive\n21.4\n6\n258\n110\n3.08\n3.215\n19.44\n1\n0\n3\n1\n\n\nHornet Sportabout\n18.7\n8\n360\n175\n3.15\n3.440\n17.02\n0\n0\n3\n2"
+  },
+  {
+    "objectID": "index.html#creando-tablas-con-flextable-en-quarto",
+    "href": "index.html#creando-tablas-con-flextable-en-quarto",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Creando tablas con flextable en Quarto",
+    "text": "Creando tablas con flextable en Quarto\n\n```{r}\n#| tbl-cap: Una tabla con `flextable`\nlibrary(flextable)\n\ncopy_mtcars &lt;- mtcars\ncopy_mtcars$brand &lt;- row.names(mtcars)\ncopy_mtcars &lt;- copy_mtcars[ , c(12,1:11)]\n\nft &lt;- flextable(copy_mtcars[1:5, ])\nft &lt;- autofit(ft)\nft\n```\n\n\nUna tabla con flextablebrandmpgcyldisphpdratwtqsecvsamgearcarbMazda RX421.061601103.902.62016.460144Mazda RX4 Wag21.061601103.902.87517.020144Datsun 71022.84108933.852.32018.611141Hornet 4 Drive21.462581103.083.21519.441031Hornet Sportabout18.783601753.153.44017.020032"
+  },
+  {
+    "objectID": "index.html#aprendiendo-quarto-en-acción",
+    "href": "index.html#aprendiendo-quarto-en-acción",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Aprendiendo Quarto en acción",
+    "text": "Aprendiendo Quarto en acción\nPara esta parte final, vamos a ver más opciones dentro de los documentos de Quarto a través un archivo de Quarto que he creado y que está disponible aquí."
+  }
+]
