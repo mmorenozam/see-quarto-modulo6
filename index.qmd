@@ -272,7 +272,7 @@ Para ello, copia el siguiente ejemplo de los "tamaños de diamante" del libro ["
 cat(readr::read_file("diamond-sizes.qmd"))
 ```
 
-## Nombrando partes de código
+## Nombrando fragmentos de código
 
 ::: incremental
 -   Las partes de código pueden ser nombradas
@@ -291,7 +291,7 @@ cat(readr::read_file("diamond-sizes.qmd"))
 
 -   Esto puede ser útil ya que nos permite navegar directamente hacia fragmentos de código específicos.
 
-## Opciones en las partes de Código {.smaller .scrollable}
+## Opciones en los fragmentos de Código {.smaller .scrollable}
 
 ::: incremental
 -   El código de R que usemos para nuestros reportes tiene una variada gama de opciones, entre ellas:
@@ -371,12 +371,12 @@ cat(readr::read_file("diamond-sizes.qmd"))
 
 -   Noten como en el código arriba, el nombre de nuestra figura está antecedido por `images/`.
 
-## Creando figuras en partes de código {.smaller}
+## Creando figuras en fragmentos de código {.smaller}
 
 ::: incremental
--   Quarto puede renderizar figuras producidas por partes de código R dentro de un documento (como ya lo debiste notar al renderizar nuestro documento de ejemplo a formato pdf (diapositiva 14).
+-   Quarto puede renderizar figuras producidas por fragmentos de código R dentro de un documento (como ya lo debiste notar al renderizar nuestro documento de ejemplo a formato pdf.
 
--   Funciona sin mayores problemas para la mayoría de plots producidos tanto por gráficos de R base, `ggplot2` y otros paquetes. Aunque, con ciertas excepciones, como ya mencionamos a paquetes que dependen de `plotly` (que requieren una versión específica de `knitr`).
+-   Funciona sin mayores problemas para la mayoría de plots producidos tanto por gráficos de R base, `ggplot2` y otros paquetes. Aunque, con ciertas excepciones, como ya mencionamos, aquellos paquetes que dependen de `plotly` (que requieren una versión específica de `knitr`).
 
 -   Ahora, lo importante es saber cómo podemos determinar el tamaño de nuestras figuras. Para ello podemos hacer uso estas opciones en nuestros fragmentos de código:
 
@@ -535,4 +535,4 @@ ft
 
 ## Aprendiendo Quarto en acción
 
-Para esta parte final, vamos a ver más opciones dentro de los documentos de Quarto a través un archivo de Quarto que he creado y que está [disponible aquí](https://raw.githubusercontent.com/mmorenozam/progR-website/main/ejemplo_reporte.qmd){target="blank_"}.
+Para esta parte final de este corto módulo, vamos a ver más opciones dentro de los documentos de Quarto a través un archivo de Quarto que he creado y que está [disponible aquí](https://raw.githubusercontent.com/mmorenozam/progR-website/main/ejemplo_reporte.qmd){target="blank_"}.

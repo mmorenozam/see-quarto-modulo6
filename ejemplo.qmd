@@ -1,0 +1,245 @@
+---
+title: "Análisis de Varianza de los pingüinos de Palmer"
+author: "Mauricio Moreno"
+date: "2023-11-11"
+format: pdf
+toc: true
+---
+
+```{r}
+#| warning: false
+#| message: false
+#| error: false
+#| echo: false
+#| eval: true
+
+library(palmerpenguins)
+library(tidycomm)
+library(flextable)
+library(ggplot2)
+library(car)
+library(ggstatsplot)
+library(dplyr)
+library(rstatix)
+library(emmeans)
+library(multcomp)
+library(multcompView)
+library(stringr)
+```
+
+## Datos
+
+Los datos en el presente reporte corresponden a la tabla `penguins` del paquete `palmerpenguins`. Esta tabla contiene 8 variables que corresponden a 344 pingüinos de 3 especies (Adelie, Chinstrap y Gentoo).
+
+## Hipótesis
+
+El largo de la aleta de los pingüinos de Palmer difiere significativamente dependiendo de su especie.
+
+## Estadísticos descriptivos
+
+Las poblaciones de pingüinos se encuentran caracterizadas por los siguientes estadísticos:
+
+```{r}
+#| warning: false
+#| message: false
+#| error: false
+#| eval: true
+
+desc_tabla <- describe(penguins) %>%
+  flextable(.) %>%
+  colformat_double(., digits = 2)
+
+autofit(desc_tabla)
+```
+
+Por ejemplo, podemos ver como el largo de la aleta (flipper length) varia de 172 a 231 mm, con una media de 200.9 mm.
+
+
+## Pruebas de los supuestos
+
+Antes de comenzar con pruebas formales de normalidad y homocedasticidad, podemos dar un vistazo a las distribuciones de las aletas en función de su especie. De acuerdo a la siguiente figura, podemos suponer que los datos están cercanos a cumplir los supuestos.
+
+```{r}
+#| warning: false
+#| message: false
+#| error: false
+#| eval: true
+#| fig-width: 7
+#| fig-height: 5
+#| fig-align: center
+
+ggplot(penguins, aes(x = flipper_length_mm, fill = species))+
+  geom_density(alpha = 0.5)+
+  theme(legend.position = "none")+
+  labs(x = "largo de aleta (mm)", title = "Largo de aleta (mm) por especie de pingüino")
+
+```
+
+
+
+De los gráficos diagnósticos, podemos ver que no existen mayores razones de preocupación de que los supuestos no se cumplan.
+
+```{r}
+#| warning: false
+#| message: false
+#| error: false
+#| eval: true
+#| fig-width: 8
+#| fig-height: 8
+#| fig-align: center
+
+lm1 <- lm(flipper_length_mm ~ species, data = penguins)
+par(mfrow = c(2, 2))
+plot(lm1)
+par(mfrow = c(1, 1))
+```
+
+Esto se confirma mediante las pruebas formales de Shapiro-Wilk y Levene para la normalidad y la homocedasticidad, respectivamente.
+
+```{r}
+#| warning: false
+#| message: false
+#| error: false
+#| eval: true
+
+residuos <- resid(lm1)
+shapiro.test(residuos)
+
+leveneTest(lm1)
+```
+
+## ANOVA
+
+Una vez que hemos visto que los supuestos se cumplen, podemos llevar a cabo el ANOVA. Sin embargo, antes de ello, es buena práctica explorar un poco más las distribuciones de nuestra variable dependiente.
+
+```{r}
+#| warning: false
+#| message: false
+#| error: false
+#| eval: true
+#| fig-width: 8
+#| fig-height: 8
+#| fig-align: center
+
+ggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species))+
+  geom_boxplot(alpha = 0.5)+
+  theme(legend.position = "none")+
+  labs(y = "largo de aleta (mm)", x = NULL, title = "Largo de aleta (mm) por especie de pingüino")
+```
+
+Del gráfico podemos intuir dos ideas:
+
+1)    Es muy probable que el largo de la aleta entre las especies Adelie y Chinstrap no sean estadísticamente distintas, y
+
+2)    Dos observaciones en la especie Adelie, de acuerdo al criterio del rango intercuartílico, podrían ser outliers. Sin embargo, de las pruebas anteriores, podemos estar seguros que estas dos observaciones no apalancan la distribución fuera de la normalidad.
+
+Adicionalmente, podemos dar un vistazo a las medias y desviaciones estándar del largo de aleta por especie. Para ello, podemos hacer uso de la librería `tidycomm`. Pero para este caso, usaremos `dplyr`, con su función `summarise`.
+
+```{r}
+#| warning: false
+#| message: false
+#| error: false
+#| eval: true
+
+penguins %>%
+  group_by(species) %>%
+  summarise(media = mean(flipper_length_mm, na.rm = T),
+            ds = sd(flipper_length_mm, na.rm = T))
+```
+
+Ahora, de acuerdo a la tabla del ANOVA, confirmamos lo que ya nos pudo haber dado la idea de los análisis anteriores. Así, podemos concluir, que con un valor p de 0.000, rechazamos la hipótesis nula de la igualdad de las medias del largo de aleta entre las especies, y al menos una es distinta.
+
+```{r}
+#| warning: false
+#| message: false
+#| error: false
+#| eval: true
+
+tabla_anova <- as.data.frame(Anova(lm1))
+tabla_anova <- cbind(parametro = row.names(tabla_anova), tabla_anova)
+tabla_anova <- add_significance(tabla_anova, 
+                 p.col = "Pr(>F)", 
+                 output.col = " ",
+                 cutpoints = c(0, 0.001, 0.01, 0.05, 0.1, 1),
+                 symbols = c("***", "**", "*", ".", "ns"))
+tabla_anova <- colformat_double(flextable(tabla_anova), digits = 3, j = c(2, 4, 5))
+tabla_anova <- add_footer_lines(tabla_anova, "Códigos Signif. 0 '***', 0.001 '**', 0.1 '*', 0.05 '.', 0.1 'ns'")
+autofit(tabla_anova)
+```
+
+## Pruebas post-hoc
+
+Llevamos a cabo la prueba HSD de Tukey, y observamos que todas las pruebas de pares son significativamente distintas. Es decir, contrario a lo que nos dio a pensar el boxplot, existe de hecho diferencias entre el largo de las aletas de las especies Adelie y Chinstrap.
+
+```{r}
+#| warning: false
+#| message: false
+#| error: false
+#| eval: true
+
+medias_marginales <- emmeans(lm1, specs = "species", type = "response")
+
+tukey_comp <- contrast(medias_marginales, specs = "species", method = "tukey")
+tukey_comp
+```
+
+Ahora, podemos visualizar estos resultados en dos formas, con la tabla de grupos de Tukey, o graficando dichos grupos.
+
+```{r}
+#| warning: false
+#| message: false
+#| error: false
+#| eval: true
+
+grupos_tukey <- cld(medias_marginales)
+grupos_tukey
+```
+
+```{r}
+#| warning: false
+#| message: false
+#| error: false
+#| eval: true
+#| fig-width: 4
+#| fig-height: 4
+#| fig-align: center
+
+gruposvals <- as.data.frame(grupos_tukey)
+gruposvals$Pred <- factor(gruposvals$species, levels = c("Adelie", "Chinstrap", "Gentoo"))
+ggplot(gruposvals,
+       aes(x = species, 
+           y = emmean, 
+           fill = species)) +
+  geom_bar(stat = "identity", 
+           show.legend = F, 
+           color = "black")+
+  geom_errorbar(aes(ymin = lower.CL, 
+                    ymax = upper.CL), 
+                width=0.2)+
+  geom_text(aes(label=str_trim(.group), 
+                y = upper.CL, vjust=-0.5))+
+  labs(caption = "Intervalos de confianza al 95%\nde la predicción representados con barras de error",
+       x = NULL, y = "media predicha de largo de aleta (mm)")
+```
+
+O también podemos hacer uso de la librería `ggstatsplot`. Esta librería no realiza HSD Tukey *per se*, sino Games-Howell. Games-Howell no asume varianzas iguales, y por tanto realiza corrección de Welch en todos los casos. Cuando los grupos son homocedásticos, sus resultados son los mismos que HSD Tukey.
+
+```{r}
+#| warning: false
+#| message: false
+#| error: false
+#| eval: true
+#| fig-width: 5
+#| fig-height: 6
+#| fig-align: center
+
+set.seed(1985) # esta librería realiza sampling aleatorio para calcular los intervalos de confianza de las differencias de las medias. Por esta razón, es aconsejable setear una semilla aleatoria para que nuestros resultados sean reproducibles.
+ggbetweenstats(
+  data = penguins,
+  x = species,
+  y = flipper_length_mm,
+  pairwise.comparisons = T,
+  pairwise.display = "all",
+  p.adjust.method = "none"
+)
+```
