@@ -1,19 +1,5 @@
 [
   {
-    "objectID": "index.html#evaluación-del-curso",
-    "href": "index.html#evaluación-del-curso",
-    "title": "Módulo 6: Introducción a Quarto",
-    "section": "Evaluación del curso",
-    "text": "Evaluación del curso\nDeseo saber tu opinión acerca del curso hasta este momento. Por favor, ingresa al menti haciendo click aquí o con el siguiente código QR:"
-  },
-  {
-    "objectID": "index.html#evaluación-del-curso-1",
-    "href": "index.html#evaluación-del-curso-1",
-    "title": "Módulo 6: Introducción a Quarto",
-    "section": "Evaluación del curso",
-    "text": "Evaluación del curso"
-  },
-  {
     "objectID": "index.html#introducción",
     "href": "index.html#introducción",
     "title": "Módulo 6: Introducción a Quarto",
@@ -119,22 +105,22 @@
     "text": "Partes básicas de un documento de Quarto\nPara ello, copia el siguiente ejemplo de los “tamaños de diamante” del libro “R for Data Science” de Hadley Wickham y cópialo sobre el archivo que generamos:\n\n\n---\ntitle: \"Diamond sizes\"\ndate: 2022-09-12\nformat:\n  html:\n    theme: cosmo\n  pdf:\n    documentclass: report\n  docx: default\n---\n\n```{r}\n#| label: setup\n#| include: false\n\nlibrary(tidyverse)\n\nsmaller &lt;- diamonds |&gt; \n  filter(carat &lt;= 2.5)\n```\n\nWe have data about `r nrow(diamonds)` diamonds.\nOnly `r nrow(diamonds) - nrow(smaller)` are larger than 2.5 carats.\nThe distribution of the remainder is shown below:\n\n```{r}\n#| label: plot-smaller-diamonds\n#| echo: false\n\nsmaller |&gt; \n  ggplot(aes(x = carat)) + \n  geom_freqpoly(binwidth = 0.01)\n```\n\n\n```{r}\n#| echo: fenced\n#| out-width: \"70%\"\n#| fig-align: center\n\nsmaller |&gt; \n  ggplot(aes(y = price, x = color)) + \n  geom_bar(stat = \"identity\")\n```\n\n```{r}\n#| echo: fenced\n#| tbl-cap: Una tabla con `flextable`\nlibrary(flextable)\n\ncopy_mtcars &lt;- mtcars\ncopy_mtcars$brand &lt;- row.names(mtcars)\ncopy_mtcars &lt;- copy_mtcars[ , c(12,1:11)]\n\nft &lt;- flextable(copy_mtcars[1:5, ])\nft &lt;- autofit(ft)\nft\n```\n\n\n```{r}\n#| echo: fenced\n#| tbl-cap: Una tabla con `knitr`\n \nknitr::kable(mtcars[1:5, ])\n```"
   },
   {
-    "objectID": "index.html#nombrando-partes-de-código",
-    "href": "index.html#nombrando-partes-de-código",
+    "objectID": "index.html#nombrando-fragmentos-de-código",
+    "href": "index.html#nombrando-fragmentos-de-código",
     "title": "Módulo 6: Introducción a Quarto",
-    "section": "Nombrando partes de código",
-    "text": "Nombrando partes de código\n\n\nLas partes de código pueden ser nombradas\n\n\n\n\n```{r}\n#| label: simple-addition\n\n1 + 1\n```\n\n[1] 2\n\n\n\n\n\nEsto puede ser útil ya que nos permite navegar directamente hacia fragmentos de código específicos."
+    "section": "Nombrando fragmentos de código",
+    "text": "Nombrando fragmentos de código\n\n\nLas partes de código pueden ser nombradas\n\n\n\n\n```{r}\n#| label: simple-addition\n\n1 + 1\n```\n\n[1] 2\n\n\n\n\n\nEsto puede ser útil ya que nos permite navegar directamente hacia fragmentos de código específicos."
+  },
+  {
+    "objectID": "index.html#opciones-en-los-fragmentos-de-código",
+    "href": "index.html#opciones-en-los-fragmentos-de-código",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Opciones en los fragmentos de Código",
+    "text": "Opciones en los fragmentos de Código\n\n\nEl código de R que usemos para nuestros reportes tiene una variada gama de opciones, entre ellas:\n\neval: false cuando no queremos que al renderizar se ejecute el código.\ninclude: false corre el código, pero no lo muestra en el documento.\necho: false evalua el código, y sus resultados son renderizados (ejemplo: gráficos). Pero, el código no forma parte del documento final.\nmessage: false o warning: false evita que mensajes o advertencias de correr el código sean parte del documento.\nresults: hide oculta resultads; fig-show: hide oculta figuras. Estas opciones son más útiles en creación de documentos html.\nerror: true permite el terminar el renderizado del documento así se encuentren errores en el código. Es especialmente importante cuando comenzamos a crear el reporte ya que nos permite identificar fallas y corregirlas.\n\nPara incluir estas opciones en nuestros fragmentos de código, podemos hacerlo usando la sintaxis #| seguida de la opción:\n\n\n\n\n```{r}\n#| label: simple-multiplication\n#| eval: false\n\n2 * 2\n```"
   },
   {
     "objectID": "index.html#opciones-en-las-partes-de-código",
     "href": "index.html#opciones-en-las-partes-de-código",
-    "title": "Módulo 6: Introducción a Quarto",
-    "section": "Opciones en las partes de Código",
-    "text": "Opciones en las partes de Código\n\n\n\n\n\n\n\n\n\n\n\n\nOption\nRun code\nShow code\nOutput\nPlots\nMessages\nWarnings\n\n\n\n\neval: false\nX\n\nX\nX\nX\nX\n\n\ninclude: false\n\nX\nX\nX\nX\nX\n\n\necho: false\n\nX\n\n\n\n\n\n\nresults: hide\n\n\nX\n\n\n\n\n\nfig-show: hide\n\n\n\nX\n\n\n\n\nmessage: false\n\n\n\n\nX\n\n\n\nwarning: false\n\n\n\n\n\nX"
-  },
-  {
-    "objectID": "index.html#opciones-en-las-partes-de-código-1",
-    "href": "index.html#opciones-en-las-partes-de-código-1",
     "title": "Módulo 6: Introducción a Quarto",
     "section": "Opciones en las partes de Código",
     "text": "Opciones en las partes de Código\n\n\n\n\n\n\n\n\n\n\n\n\nOption\nRun code\nShow code\nOutput\nPlots\nMessages\nWarnings\n\n\n\n\neval: false\nX\n\nX\nX\nX\nX\n\n\ninclude: false\n\nX\nX\nX\nX\nX\n\n\necho: false\n\nX\n\n\n\n\n\n\nresults: hide\n\n\nX\n\n\n\n\n\nfig-show: hide\n\n\n\nX\n\n\n\n\nmessage: false\n\n\n\n\nX\n\n\n\nwarning: false\n\n\n\n\n\nX"
@@ -154,11 +140,11 @@
     "text": "Importando figuras\n\n\nPodemos importar figuras de archivos externos (.png, .jpg, .pdf, etc).\nPara esto, empecemos creando una carpeta dentro de nuestro directorio de trabajo para almacenar nuestras imágenes (este paso es opcional, pero recomendado para una mejor organización de nuestros proyectos).\nHecho esto, importamos la figura de interés con la sintaxis: ![Pie de figura](figura_nombre){opciones}\n\n\n\n\n![Logo SEE](images/icon.png){fig-align=\"center\" width=15%}\n\n\n\n\nLogo SEE\n\n\n\n\n\nNoten como en el código arriba, el nombre de nuestra figura está antecedido por images/."
   },
   {
-    "objectID": "index.html#creando-figuras-en-partes-de-código",
-    "href": "index.html#creando-figuras-en-partes-de-código",
+    "objectID": "index.html#creando-figuras-en-fragmentos-de-código",
+    "href": "index.html#creando-figuras-en-fragmentos-de-código",
     "title": "Módulo 6: Introducción a Quarto",
-    "section": "Creando figuras en partes de código",
-    "text": "Creando figuras en partes de código\n\n\nQuarto puede renderizar figuras producidas por partes de código R dentro de un documento (como ya lo debiste notar al renderizar nuestro documento de ejemplo a formato pdf (diapositiva 14).\nFunciona sin mayores problemas para la mayoría de plots producidos tanto por gráficos de R base, ggplot2 y otros paquetes. Aunque, con ciertas excepciones, como ya mencionamos a paquetes que dependen de plotly (que requieren una versión específica de knitr).\nAhora, lo importante es saber cómo podemos determinar el tamaño de nuestras figuras. Para ello podemos hacer uso estas opciones en nuestros fragmentos de código:\n\nfig-width: controla el ancho de la figura.\nfig-height: controla el alto de la figura.\nfig-asp: controla la relación de aspecto (relación ancho por alto).\nout-width y out-height: controlan el ancho y largo de la figura (en porcentaje con respecto al ancho y alto de la página del documento)."
+    "section": "Creando figuras en fragmentos de código",
+    "text": "Creando figuras en fragmentos de código\n\n\nQuarto puede renderizar figuras producidas por fragmentos de código R dentro de un documento (como ya lo debiste notar al renderizar nuestro documento de ejemplo a formato pdf.\nFunciona sin mayores problemas para la mayoría de plots producidos tanto por gráficos de R base, ggplot2 y otros paquetes. Aunque, con ciertas excepciones, como ya mencionamos, aquellos paquetes que dependen de plotly (que requieren una versión específica de knitr).\nAhora, lo importante es saber cómo podemos determinar el tamaño de nuestras figuras. Para ello podemos hacer uso estas opciones en nuestros fragmentos de código:\n\nfig-width: controla el ancho de la figura.\nfig-height: controla el alto de la figura.\nfig-asp: controla la relación de aspecto (relación ancho por alto).\nout-width y out-height: controlan el ancho y largo de la figura (en porcentaje con respecto al ancho y alto de la página del documento)."
   },
   {
     "objectID": "index.html#controlando-el-tamaño-de-una-figura",
@@ -215,96 +201,5 @@
     "title": "Módulo 6: Introducción a Quarto",
     "section": "Aprendiendo Quarto en acción",
     "text": "Aprendiendo Quarto en acción\nPara esta parte final de este corto módulo, vamos a ver más opciones dentro de los documentos de Quarto a través un archivo de Quarto que he creado y que está disponible aquí."
-  },
-  {
-    "objectID": "ejemplo.html",
-    "href": "ejemplo.html",
-    "title": "Análisis de Varianza de los pingüinos de Palmer",
-    "section": "",
-    "text": "Los datos en el presente reporte corresponden a la tabla penguins del paquete palmerpenguins. Esta tabla contiene 8 variables que corresponden a 344 pingüinos de 3 especies (Adelie, Chinstrap y Gentoo)."
-  },
-  {
-    "objectID": "ejemplo.html#datos",
-    "href": "ejemplo.html#datos",
-    "title": "Análisis de Varianza de los pingüinos de Palmer",
-    "section": "",
-    "text": "Los datos en el presente reporte corresponden a la tabla penguins del paquete palmerpenguins. Esta tabla contiene 8 variables que corresponden a 344 pingüinos de 3 especies (Adelie, Chinstrap y Gentoo)."
-  },
-  {
-    "objectID": "ejemplo.html#hipótesis",
-    "href": "ejemplo.html#hipótesis",
-    "title": "Análisis de Varianza de los pingüinos de Palmer",
-    "section": "Hipótesis",
-    "text": "Hipótesis\nEl largo de la aleta de los pingüinos de Palmer difiere significativamente dependiendo de su especie."
-  },
-  {
-    "objectID": "ejemplo.html#estadísticos-descriptivos",
-    "href": "ejemplo.html#estadísticos-descriptivos",
-    "title": "Análisis de Varianza de los pingüinos de Palmer",
-    "section": "Estadísticos descriptivos",
-    "text": "Estadísticos descriptivos\nLas poblaciones de pingüinos se encuentran caracterizadas por los siguientes estadísticos:\n\ndesc_tabla &lt;- describe(penguins) %&gt;%\n  flextable(.) %&gt;%\n  colformat_double(., digits = 2)\n\nautofit(desc_tabla)\n\n\nVariableNMissingMSDMinQ25MdnQ75MaxRangeCI_95_LLCI_95_ULSkewnessKurtosisbill_length_mm342243.925.4632.1039.2344.4548.5059.6027.5043.3444.500.052.12bill_depth_mm342217.151.9713.1015.6017.3018.7021.508.4016.9417.36-0.142.09flipper_length_mm3422200.9214.06172.00190.00197.00213.00231.0059.00199.42202.410.342.01body_mass_g34224,201.75801.952,700.003,550.004,050.004,750.006,300.003,600.004,116.464,287.050.472.27year34402,008.030.822,007.002,007.002,008.002,009.002,009.002.002,007.942,008.12-0.051.50\n\n\nPor ejemplo, podemos ver como el largo de la aleta (flipper length) varia de 172 a 231 mm, con una media de 200.9 mm."
-  },
-  {
-    "objectID": "ejemplo.html#pruebas-de-los-supuestos",
-    "href": "ejemplo.html#pruebas-de-los-supuestos",
-    "title": "Análisis de Varianza de los pingüinos de Palmer",
-    "section": "Pruebas de los supuestos",
-    "text": "Pruebas de los supuestos\nAntes de comenzar con pruebas formales de normalidad y homocedasticidad, podemos dar un vistazo a las distribuciones de las aletas en función de su especie. De acuerdo a la siguiente figura, podemos suponer que los datos están cercanos a cumplir los supuestos.\n\nggplot(penguins, aes(x = flipper_length_mm, fill = species))+\n  geom_density(alpha = 0.5)+\n  theme(legend.position = \"none\")+\n  labs(x = \"largo de aleta (mm)\", title = \"Largo de aleta (mm) por especie de pingüino\")\n\n\n\n\n\n\n\n\nDe los gráficos diagnósticos, podemos ver que no existen mayores razones de preocupación de que los supuestos no se cumplan.\n\nlm1 &lt;- lm(flipper_length_mm ~ species, data = penguins)\npar(mfrow = c(2, 2))\nplot(lm1)\n\n\n\n\n\n\n\npar(mfrow = c(1, 1))\n\nEsto se confirma mediante las pruebas formales de Shapiro-Wilk y Levene para la normalidad y la homocedasticidad, respectivamente.\n\nresiduos &lt;- resid(lm1)\nshapiro.test(residuos)\n\n\n    Shapiro-Wilk normality test\n\ndata:  residuos\nW = 0.99452, p-value = 0.2609\n\nleveneTest(lm1)\n\nLevene's Test for Homogeneity of Variance (center = median)\n       Df F value Pr(&gt;F)\ngroup   2  0.3306 0.7188\n      339"
-  },
-  {
-    "objectID": "ejemplo.html#anova",
-    "href": "ejemplo.html#anova",
-    "title": "Análisis de Varianza de los pingüinos de Palmer",
-    "section": "ANOVA",
-    "text": "ANOVA\nUna vez que hemos visto que los supuestos se cumplen, podemos llevar a cabo el ANOVA. Sin embargo, antes de ello, es buena práctica explorar un poco más las distribuciones de nuestra variable dependiente.\n\nggplot(penguins, aes(x = species, y = flipper_length_mm, fill = species))+\n  geom_boxplot(alpha = 0.5)+\n  theme(legend.position = \"none\")+\n  labs(y = \"largo de aleta (mm)\", x = NULL, title = \"Largo de aleta (mm) por especie de pingüino\")\n\n\n\n\n\n\n\n\nDel gráfico podemos intuir dos ideas:\n\nEs muy probable que el largo de la aleta entre las especies Adelie y Chinstrap no sean estadísticamente distintas, y\nDos observaciones en la especie Adelie, de acuerdo al criterio del rango intercuartílico, podrían ser outliers. Sin embargo, de las pruebas anteriores, podemos estar seguros que estas dos observaciones no apalancan la distribución fuera de la normalidad.\n\nAdicionalmente, podemos dar un vistazo a las medias y desviaciones estándar del largo de aleta por especie. Para ello, podemos hacer uso de la librería tidycomm. Pero para este caso, usaremos dplyr, con su función summarise.\n\npenguins %&gt;%\n  group_by(species) %&gt;%\n  summarise(media = mean(flipper_length_mm, na.rm = T),\n            ds = sd(flipper_length_mm, na.rm = T))\n\n# A tibble: 3 × 3\n  species   media    ds\n  &lt;fct&gt;     &lt;dbl&gt; &lt;dbl&gt;\n1 Adelie     190.  6.54\n2 Chinstrap  196.  7.13\n3 Gentoo     217.  6.48\n\n\nAhora, de acuerdo a la tabla del ANOVA, confirmamos lo que ya nos pudo haber dado la idea de los análisis anteriores. Así, podemos concluir, que con un valor p de 0.000, rechazamos la hipótesis nula de la igualdad de las medias del largo de aleta entre las especies, y al menos una es distinta.\n\ntabla_anova &lt;- as.data.frame(Anova(lm1))\ntabla_anova &lt;- cbind(parametro = row.names(tabla_anova), tabla_anova)\ntabla_anova &lt;- add_significance(tabla_anova, \n                 p.col = \"Pr(&gt;F)\", \n                 output.col = \" \",\n                 cutpoints = c(0, 0.001, 0.01, 0.05, 0.1, 1),\n                 symbols = c(\"***\", \"**\", \"*\", \".\", \"ns\"))\ntabla_anova &lt;- colformat_double(flextable(tabla_anova), digits = 3, j = c(2, 4, 5))\ntabla_anova &lt;- add_footer_lines(tabla_anova, \"Códigos Signif. 0 '***', 0.001 '**', 0.1 '*', 0.05 '.', 0.1 'ns'\")\nautofit(tabla_anova)\n\n\nparametroSum SqDfF valuePr(&gt;F) species52,473.2842594.8020.000***Residuals14,953.257339Códigos Signif. 0 '***', 0.001 '**', 0.1 '*', 0.05 '.', 0.1 'ns'"
-  },
-  {
-    "objectID": "ejemplo.html#pruebas-post-hoc",
-    "href": "ejemplo.html#pruebas-post-hoc",
-    "title": "Análisis de Varianza de los pingüinos de Palmer",
-    "section": "Pruebas post-hoc",
-    "text": "Pruebas post-hoc\nLlevamos a cabo la prueba HSD de Tukey, y observamos que todas las pruebas de pares son significativamente distintas. Es decir, contrario a lo que nos dio a pensar el boxplot, existe de hecho diferencias entre el largo de las aletas de las especies Adelie y Chinstrap.\n\nmedias_marginales &lt;- emmeans(lm1, specs = \"species\", type = \"response\")\n\ntukey_comp &lt;- contrast(medias_marginales, specs = \"species\", method = \"tukey\")\ntukey_comp\n\n contrast           estimate    SE  df t.ratio p.value\n Adelie - Chinstrap    -5.87 0.970 339  -6.052  &lt;.0001\n Adelie - Gentoo      -27.23 0.807 339 -33.760  &lt;.0001\n Chinstrap - Gentoo   -21.36 1.004 339 -21.286  &lt;.0001\n\nP value adjustment: tukey method for comparing a family of 3 estimates \n\n\nAhora, podemos visualizar estos resultados en dos formas, con la tabla de grupos de Tukey, o graficando dichos grupos.\n\ngrupos_tukey &lt;- cld(medias_marginales)\ngrupos_tukey\n\n species   emmean    SE  df lower.CL upper.CL .group\n Adelie       190 0.540 339      189      191  1    \n Chinstrap    196 0.805 339      194      197   2   \n Gentoo       217 0.599 339      216      218    3  \n\nConfidence level used: 0.95 \nP value adjustment: tukey method for comparing a family of 3 estimates \nsignificance level used: alpha = 0.05 \nNOTE: If two or more means share the same grouping symbol,\n      then we cannot show them to be different.\n      But we also did not show them to be the same. \n\n\n\ngruposvals &lt;- as.data.frame(grupos_tukey)\ngruposvals$Pred &lt;- factor(gruposvals$species, levels = c(\"Adelie\", \"Chinstrap\", \"Gentoo\"))\nggplot(gruposvals,\n       aes(x = species, \n           y = emmean, \n           fill = species)) +\n  geom_bar(stat = \"identity\", \n           show.legend = F, \n           color = \"black\")+\n  geom_errorbar(aes(ymin = lower.CL, \n                    ymax = upper.CL), \n                width=0.2)+\n  geom_text(aes(label=str_trim(.group), \n                y = upper.CL, vjust=-0.5))+\n  labs(caption = \"Intervalos de confianza al 95%\\nde la predicción representados con barras de error\",\n       x = NULL, y = \"media predicha de largo de aleta (mm)\")\n\n\n\n\n\n\n\n\nO también podemos hacer uso de la librería ggstatsplot. Esta librería no realiza HSD Tukey per se, sino Games-Howell. Games-Howell no asume varianzas iguales, y por tanto realiza corrección de Welch en todos los casos. Cuando los grupos son homocedásticos, sus resultados son los mismos que HSD Tukey.\n\nset.seed(1985) # esta librería realiza sampling aleatorio para calcular los intervalos de confianza de las differencias de las medias. Por esta razón, es aconsejable setear una semilla aleatoria para que nuestros resultados sean reproducibles.\nggbetweenstats(\n  data = penguins,\n  x = species,\n  y = flipper_length_mm,\n  pairwise.comparisons = T,\n  pairwise.display = \"all\",\n  p.adjust.method = \"none\"\n)"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Módulo 6: Introducción a Quarto",
-    "section": "",
-    "text": "R tiene la capacidad de crear reportes en distintos formatos.\nEsta funcionalidad en el pasado se daba gracias al paquete rmarkdown (creado por los mismos desarrolladores de RStudio), que es una adaptación del lenguaje Markdown. Sin embargo, rmarkdown posee ciertas desventajas:\n\nEs exclusivo de lenguaje R\nNecesita de otros paquetes para crear distintos tipos de documentos (blogdown para sitios web, bookdown para libros o revealjs para crear presentaciones).\nEl hacer uso de extensiones es complejo.\n\nEn 2022, el grupo de desarrolladores de RStudio (Posit), lanzó Quarto como la siguiente generación de rmarkdown. Entre sus ventajas cuenta:\n\nEs multi-lenguaje. Al momento tiene compatibilidad con Python, Julia, Observable y por supuesto R.\nOpciones de renderizado centralizadas (no se requiere ya de distintos paquetes para crear sitios web, libros o presentaciones).\nLas extensiones son fácilmente instaladas (ejemplo: puntero láser en presentaciones).\n\n\n\n\n\n\n\n\nQuarto es un sistema de publicación científica de licencia abierta construído en Pandoc\nFue nombrado de esta manera por la intención de sus creadores de darle un nombre representativo: Quarto es el formato de un panfleto o libro producido de hojas impresas que contienen 8 páginas de texto (4 páginas por carilla). Se cree que el primer libro europeo impreso fue un Quarto llamado el Sibyllenbuch, atribuido a Johannes Gutenberg entre 1452 y 1453.\n\n\n. . .\n\n\n\nEjemplo de un Quarto: Fragmento de Hamlet, impreso durante la vida de Shakespeare\n\n\n\n\n\n\n\nCon Quarto podemos producir documentos en varios formatos, pero debemos tener en cuenta algunos pre-requisitos:\n\nhtml (no necesita pre-requerisitos)\npdf (necesita \\(\\LaTeX\\))\nWord (necesita Microsoft Office o LibreOffice)\nPower Point (necesita Microsoft Office o LibreOffice)\nShiny apps (necesita el paquete shiny de R)\n\nOtra funcionalidad interesante de Quarto (y rmarkdown también), es el poder renderizar ecuaciones:\n\nCuando creamos documentos con fórmulas matemáticas, Quarto usa un módulo llamado “Latexmk” que las renderiza de manera similar como lo haría \\(\\LaTeX\\).\n\n\n\n\n\n\n\n\n\n\n\\(\\TeX\\) es un sistema de edición de fórmulas creado por el matemático Donald Knuth en 1978.\nPosteriormente en 1984, el matemático Leslie Lamport creó \\(\\LaTeX\\), que es un software de edición que se basa en \\(\\TeX\\).\nTanto \\(\\TeX\\) como \\(\\LaTeX\\), nacieron de la necesidad de contar con un editor de texto capaz de renderizar ecuaciones matemáticas.\nBastante popular en ingenierías, física y matemáticas.\nIndependientemente de que creemos documentos en Word o pdf con fórmulas, estas necesitan estar en lenguaje \\(\\TeX\\) para su renderización.\nSi creamos documentos en pdf, es indispensable instalar alguna versión de \\(\\LaTeX\\), como ya veremos en breve."
-  },
-  {
-    "objectID": "index.html#nombrando-fragmentos-de-código",
-    "href": "index.html#nombrando-fragmentos-de-código",
-    "title": "Módulo 6: Introducción a Quarto",
-    "section": "Nombrando fragmentos de código",
-    "text": "Nombrando fragmentos de código\n\n\nLas partes de código pueden ser nombradas\n\n\n\n\n```{r}\n#| label: simple-addition\n\n1 + 1\n```\n\n[1] 2\n\n\n\n\n\nEsto puede ser útil ya que nos permite navegar directamente hacia fragmentos de código específicos."
-  },
-  {
-    "objectID": "index.html#opciones-en-los-fragmentos-de-código",
-    "href": "index.html#opciones-en-los-fragmentos-de-código",
-    "title": "Módulo 6: Introducción a Quarto",
-    "section": "Opciones en los fragmentos de Código",
-    "text": "Opciones en los fragmentos de Código\n\n\nEl código de R que usemos para nuestros reportes tiene una variada gama de opciones, entre ellas:\n\neval: false cuando no queremos que al renderizar se ejecute el código.\ninclude: false corre el código, pero no lo muestra en el documento.\necho: false evalua el código, y sus resultados son renderizados (ejemplo: gráficos). Pero, el código no forma parte del documento final.\nmessage: false o warning: false evita que mensajes o advertencias de correr el código sean parte del documento.\nresults: hide oculta resultads; fig-show: hide oculta figuras. Estas opciones son más útiles en creación de documentos html.\nerror: true permite el terminar el renderizado del documento así se encuentren errores en el código. Es especialmente importante cuando comenzamos a crear el reporte ya que nos permite identificar fallas y corregirlas.\n\nPara incluir estas opciones en nuestros fragmentos de código, podemos hacerlo usando la sintaxis #| seguida de la opción:\n\n\n\n\n```{r}\n#| label: simple-multiplication\n#| eval: false\n\n2 * 2\n```"
-  },
-  {
-    "objectID": "index.html#creando-figuras-en-fragmentos-de-código",
-    "href": "index.html#creando-figuras-en-fragmentos-de-código",
-    "title": "Módulo 6: Introducción a Quarto",
-    "section": "Creando figuras en fragmentos de código",
-    "text": "Creando figuras en fragmentos de código\n\n\nQuarto puede renderizar figuras producidas por fragmentos de código R dentro de un documento (como ya lo debiste notar al renderizar nuestro documento de ejemplo a formato pdf.\nFunciona sin mayores problemas para la mayoría de plots producidos tanto por gráficos de R base, ggplot2 y otros paquetes. Aunque, con ciertas excepciones, como ya mencionamos, aquellos paquetes que dependen de plotly (que requieren una versión específica de knitr).\nAhora, lo importante es saber cómo podemos determinar el tamaño de nuestras figuras. Para ello podemos hacer uso estas opciones en nuestros fragmentos de código:\n\nfig-width: controla el ancho de la figura.\nfig-height: controla el alto de la figura.\nfig-asp: controla la relación de aspecto (relación ancho por alto).\nout-width y out-height: controlan el ancho y largo de la figura (en porcentaje con respecto al ancho y alto de la página del documento)."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "diamond-sizes.html",
-    "href": "diamond-sizes.html",
-    "title": "Diamond sizes",
-    "section": "",
-    "text": "We have data about 53940 diamonds. Only 126 are larger than 2.5 carats. The distribution of the remainder is shown below:\n\n\n\n\n\n\n```{r}\n#| out-width: \"70%\"\n#| fig-align: center\n\nsmaller |&gt; \n  ggplot(aes(y = price, x = color)) + \n  geom_bar(stat = \"identity\")\n```\n\n\n\n\n\n\n\n\n\n```{r}\n#| tbl-cap: Una tabla con `flextable`\nlibrary(flextable)\n```\n\nWarning: package 'flextable' was built under R version 4.3.3\n\n\n\nAttaching package: 'flextable'\n\n\nThe following object is masked from 'package:purrr':\n\n    compose\n\n```{r}\n#| tbl-cap: Una tabla con `flextable`\ncopy_mtcars &lt;- mtcars\ncopy_mtcars$brand &lt;- row.names(mtcars)\ncopy_mtcars &lt;- copy_mtcars[ , c(12,1:11)]\n\nft &lt;- flextable(copy_mtcars[1:5, ])\nft &lt;- autofit(ft)\nft\n```\n\n\nUna tabla con flextablebrandmpgcyldisphpdratwtqsecvsamgearcarbMazda RX421.061601103.902.62016.460144Mazda RX4 Wag21.061601103.902.87517.020144Datsun 71022.84108933.852.32018.611141Hornet 4 Drive21.462581103.083.21519.441031Hornet Sportabout18.783601753.153.44017.020032\n\n\n\n```{r}\n#| tbl-cap: Una tabla con `knitr`\n\nknitr::kable(mtcars[1:5, ])\n```\n\n\nUna tabla con knitr \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n\nMazda RX4\n21.0\n6\n160\n110\n3.90\n2.620\n16.46\n0\n1\n4\n4\n\n\nMazda RX4 Wag\n21.0\n6\n160\n110\n3.90\n2.875\n17.02\n0\n1\n4\n4\n\n\nDatsun 710\n22.8\n4\n108\n93\n3.85\n2.320\n18.61\n1\n1\n4\n1\n\n\nHornet 4 Drive\n21.4\n6\n258\n110\n3.08\n3.215\n19.44\n1\n0\n3\n1\n\n\nHornet Sportabout\n18.7\n8\n360\n175\n3.15\n3.440\n17.02\n0\n0\n3\n2"
   }
 ]
