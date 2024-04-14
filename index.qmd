@@ -113,7 +113,9 @@ format:
 ## Instalación de Quarto {.smaller}
 
 ::: incremental
--   Ingresa al siguiente sitio y [descarga Quarto](https://quarto.org/docs/get-started/){target="blank_"} acorde a tu Sistema Operativo.
+-   En el caso que ya hayas instalado Quarto con anterioridad, verifica que tengas la versión 1.3.450.
+
+-   Para instalar la versión 1.3.450 de Quarto ingresa a [este enlace](https://github.com/quarto-dev/quarto-cli/releases/tag/v1.3.450){target="_blank"} y descarga el archivo `quarto-1.3.450-win.msi` (para sistema operativo Windows).
 
 -   Sigue las intrucciones sin cambiar los defaults e instala Quarto.
 
@@ -470,7 +472,7 @@ smaller |>
 
 -   Cuando nos encontramos renderizando documentos de formato pdf, las figuras producidas son de alta calidad (al ser generadas como gráficos de vectores).
 
--   Sin embargo, si la figura es muy compleja (con cientos de miles de puntos en un gráfico de dispersión) esto provocará problemas:
+-   Sin embargo, si la figura es muy compleja (por ejemplo, un gráfico de dispersión con cientos de miles de puntos) esto provocará problemas:
 
     -   Archivos muy pesados
     
