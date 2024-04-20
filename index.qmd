@@ -274,6 +274,34 @@ Para ello, copia el siguiente ejemplo de los "tamaños de diamante" del libro ["
 cat(readr::read_file("diamond-sizes.qmd"))
 ```
 
+## Tipos de documentos {.smaller}
+
+
+
+-   Como ya lo hemos notado, en el encabezado del ejemplo anterior definimos al mismo tiempo 3 tipos de documentos a renderizar (html, pdf, docx).
+
+```{r echo = TRUE, eval = FALSE, comment = ""}
+---
+title: "Diamond sizes"
+date: 2022-09-12
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: report
+  docx: default
+---
+```
+
+
+::: incremental
+
+-   El encabezado (e intrucciones YAML en general), son sensitivas a la indentación, y las opciones de sus comandos tienen que estar debidamente indentadas.
+
+-   La manera más sencilla es usar el comando `format:` seguido del tipo de documento que deseemos: `pdf`, `html`, `docx`, `pptx`, `revealjs`.
+
+:::
+
 ## Nombrando fragmentos de código
 
 ::: incremental
@@ -535,6 +563,79 @@ ft <- autofit(ft)
 ft
 ```
 
-## Aprendiendo Quarto en acción
+## Presentationes en Quarto
 
-Para esta parte final de este corto módulo, vamos a ver más opciones dentro de los documentos de Quarto a través un archivo de Quarto que he creado y que está [disponible aquí](https://raw.githubusercontent.com/mmorenozam/progR-website/main/ejemplo_reporte.qmd){target="blank_"}.
+::: incremental
+
+-   Hasta el momento hemos visto los fundamentos básicos de creación de documentos en `pdf`, `html` y `docx` con Quarto.
+
+-   En lo que se trata a presentaciones, Quarto nos ofrece dos opciones:
+
+-   **Reveal.js** (`revealjs`): Un formato de presentación en HTML (similar a un página web),
+
+-   **PowerPoint** (`pptx`): el conocido formato de Microsoft Office (o Libre Office).
+
+-   Los principios que hemos visto antes también se aplican para estos dos formatos.
+
+-   Vamos a explorar un poco su uso mediante el siguiente ejemplo [disponible aquí](https://raw.githubusercontent.com/mmorenozam/ejemplo_presentacion/main/ejemplo_presentacion.qmd){target="_blank"}
+
+:::
+
+
+## Un poco más de Quarto
+
+Ahora vamos a ver más opciones dentro de los documentos de Quarto a través un archivo de Quarto que he creado y que está [disponible aquí](https://raw.githubusercontent.com/mmorenozam/progR-website/main/ejemplo_reporte.qmd){target="blank_"}.
+
+## Notas finales de este módulo {.smaller}
+
+::: {style="text-align: center;"}
+***There is no such thing as a free lunch***
+:::
+
+::: {style="text-align: right;"}
+*Milton Friedman*
+:::
+
+::: incremental
+
+-   Quarto nos ofrece funcionalidades extensas, cuyo uso básico es relativamente sencillo.
+
+-   Sin embargo, al ser un editor de texto nuevo (relativamente hablando, ya que es una actualización de Rmarkdown) no posee documentación extensa amigablemente compilada como la hay para librerías de R por ejemplo.
+
+-   Las razones de esto son diversas, entre ellas:
+
+    -   Quarto no es exclusivo de R (tiene compatibilidad con Python, Julia...). Es decir, está diseñado para su uso en diversas interfaces y combina en su funcionamiento varios lenguajes de programación.
+    
+    -   Por tanto, para explotar sus capacidades en una mayor extensión, conocimientos básicos al menos de YML, $\LaTeX{}$, markdown e incluso Java y Pandoc serían óptimos.
+    
+    
+-   Para el usuario, esto se pone a prueba cuando se desea poner en documentos de Quarto mayor énfasis a cambios estéticos en el formato.
+:::
+
+## Notas finales de este módulo {visibility="uncounted"}
+
+::: incremental
+
+-   Pero espero que esto no sea desalentador para ustedes.
+
+-   Quarto apenas tiene 2 años desde su lanzamiento, y gracias a la creciente comunidad de usuarios, seguro habrán disponibles más y más tutoriales, templates y ejemplos con el pasar del tiempo.
+
+-   Al momento, la mejor fuente de información y ayuda se encuentra precisamente en su [página oficial](https://quarto.org/){target="_blank"}.
+
+-   Adicionalmente, más ayuda está disponible en la sección de "problemas" [(*Issues*)](https://github.com/quarto-dev/quarto-cli/issues){target="_blank"} del repositorio de Github de Quarto.
+
+:::
+
+## Notas finales de este módulo {.smaller visibility="uncounted"}
+
+::: incremental
+
+-   **Limitaciones de Quarto para el usuario nuevo** (desde mi perspectiva):
+
+    -   Libertad de dar formato: dependiendo de la complejidad del documento a crear, mientras entramos en más detalle del formato (alineaciones, indexación de figuras, etc) se hace notar la necesidad de tener más conocimiento de otros lenguajes de programación.
+    
+    -   Al estar basado mayoritariamente en Pandoc y markdown, el tipo de documento por excelencia de Quarto es HTML. Esto puede ser una limitación al querer producir documentos de otros tipos.
+    
+    -   En lo que refiere a creación de páginas web, la combinación de Rmarkdown y Hugo mediante [`blogdown`](https://bookdown.org/yihui/blogdown/hugo.html){target="_blank"} permite crear portafolios vistosos y atractivos (sin embargo su implementación era bastante compleja). Quarto no posee esta interconectividad, y para la creación de portafolios o cualquier otra página web, sus templates son visualmente limitados en comparación a Hugo.
+
+:::

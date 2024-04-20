@@ -196,10 +196,59 @@
     "text": "Creando tablas con flextable en Quarto\n\n```{r}\n#| tbl-cap: Una tabla con `flextable`\nlibrary(flextable)\n\ncopy_mtcars &lt;- mtcars\ncopy_mtcars$brand &lt;- row.names(mtcars)\ncopy_mtcars &lt;- copy_mtcars[ , c(12,1:11)]\n\nft &lt;- flextable(copy_mtcars[1:5, ])\nft &lt;- autofit(ft)\nft\n```\n\n\nUna tabla con flextablebrandmpgcyldisphpdratwtqsecvsamgearcarbMazda RX421.061601103.902.62016.460144Mazda RX4 Wag21.061601103.902.87517.020144Datsun 71022.84108933.852.32018.611141Hornet 4 Drive21.462581103.083.21519.441031Hornet Sportabout18.783601753.153.44017.020032"
   },
   {
+    "objectID": "index.html#tipos-de-documentos",
+    "href": "index.html#tipos-de-documentos",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Tipos de documentos",
+    "text": "Tipos de documentos\n\nComo ya lo hemos notado, en el encabezado del ejemplo anterior definimos al mismo tiempo 3 tipos de documentos a renderizar (html, pdf, docx).\n\n\n---\ntitle: \"Diamond sizes\"\ndate: 2022-09-12\nformat:\n  html:\n    theme: cosmo\n  pdf:\n    documentclass: report\n  docx: default\n---\n\n\n\nEl encabezado (e intrucciones YAML en general), son sensitivas a la indentación, y las opciones de sus comandos tienen que estar debidamente indentadas.\nLa manera más sencilla es usar el comando format: seguido del tipo de documento que deseemos: pdf, html, docx, pptx, revealjs."
+  },
+  {
     "objectID": "index.html#aprendiendo-quarto-en-acción",
     "href": "index.html#aprendiendo-quarto-en-acción",
     "title": "Módulo 6: Introducción a Quarto",
     "section": "Aprendiendo Quarto en acción",
     "text": "Aprendiendo Quarto en acción\nPara esta parte final de este corto módulo, vamos a ver más opciones dentro de los documentos de Quarto a través un archivo de Quarto que he creado y que está disponible aquí."
+  },
+  {
+    "objectID": "index.html#presentationes-en-quarto",
+    "href": "index.html#presentationes-en-quarto",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Presentationes en Quarto",
+    "text": "Presentationes en Quarto\n\n\nHasta el momento hemos visto los fundamentos básicos de creación de documentos en pdf, html y docx con Quarto.\nEn lo que se trata a presentaciones, Quarto nos ofrece dos opciones:\nReveal.js (revealjs): Un formato de presentación en HTML (similar a un página web),\nPowerPoint (pptx): el conocido formato de Microsoft Office (o Libre Office).\nLos principios que hemos visto antes también se aplican para estos dos formatos.\nVamos a explorar un poco su uso mediante el siguiente ejemplo disponible aquí"
+  },
+  {
+    "objectID": "index.html#un-poco-más-de-quarto",
+    "href": "index.html#un-poco-más-de-quarto",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Un poco más de Quarto",
+    "text": "Un poco más de Quarto\nAhora vamos a ver más opciones dentro de los documentos de Quarto a través un archivo de Quarto que he creado y que está disponible aquí."
+  },
+  {
+    "objectID": "index.html#notas-finales",
+    "href": "index.html#notas-finales",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Notas finales",
+    "text": "Notas finales\n\nThere is no such thing as a free lunch\n\n\nMilton Friedman"
+  },
+  {
+    "objectID": "index.html#notas-finales-de-este-módulo",
+    "href": "index.html#notas-finales-de-este-módulo",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Notas finales de este módulo",
+    "text": "Notas finales de este módulo\n\nThere is no such thing as a free lunch\n\n\nMilton Friedman\n\n\n\nQuarto nos ofrece funcionalidades extensas, cuyo uso básico es relativamente sencillo.\nSin embargo, al ser un editor de texto nuevo (relativamente hablando, ya que es una actualización de Rmarkdown) no posee documentación extensa amigablemente compilada como la hay para librerías de R por ejemplo.\nLas razones de esto son diversas, entre ellas:\n\nQuarto no es exclusivo de R (tiene compatibilidad con Python, Julia…). Es decir, está diseñado para su uso en diversas interfaces y combina en su funcionamiento varios lenguajes de programación.\nPor tanto, para explotar sus capacidades en una mayor extensión, conocimientos básicos al menos de YML, \\(\\LaTeX{}\\), markdown e incluso Java y Pandoc serían óptimos.\n\nPara el usuario, esto se pone a prueba cuando se desea poner en documentos de Quarto mayor énfasis a cambios estéticos en el formato."
+  },
+  {
+    "objectID": "index.html#notas-finales-de-este-módulo-1",
+    "href": "index.html#notas-finales-de-este-módulo-1",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Notas finales de este módulo",
+    "text": "Notas finales de este módulo\n\n\nPero espero que esto no sea desalentador para ustedes.\nQuarto apenas tiene 2 años desde su lanzamiento, y gracias a la creciente comunidad de usuarios, seguro habrán disponibles más y más tutoriales, templates y ejemplos con el pasar del tiempo.\nAl momento, la mejor fuente de información y ayuda se encuentra precisamente en su página oficial.\nAdicionalmente, más ayuda está disponible en la sección de “problemas” (Issues) del repositorio de Github de Quarto."
+  },
+  {
+    "objectID": "index.html#notas-finales-de-este-módulo-2",
+    "href": "index.html#notas-finales-de-este-módulo-2",
+    "title": "Módulo 6: Introducción a Quarto",
+    "section": "Notas finales de este módulo",
+    "text": "Notas finales de este módulo\n\n\nLimitaciones de Quarto para el usuario nuevo (desde mi perspectiva):\n\nLibertad de dar formato: dependiendo de la complejidad del documento a crear, mientras entramos en más detalle del formato (alineaciones, indexación de figuras, etc) se hace notar la necesidad de tener más conocimiento de otros lenguajes de programación.\nAl estar basado mayoritariamente en Pandoc y markdown, el tipo de documento por excelencia de Quarto es HTML. Esto puede ser una limitación al querer producir documentos de otros tipos.\nEn lo que refiere a creación de páginas web, la combinación de Rmarkdown y Hugo mediante blogdown permite crear portafolios vistosos y atractivos (sin embargo su implementación era bastante compleja). Quarto no posee esta interconectividad, y para la creación de portafolios o cualquier otra página web, sus templates son visualmente limitados en comparación a Hugo."
   }
 ]
